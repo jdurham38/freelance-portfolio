@@ -33,7 +33,7 @@ export const About = () => {
                 <div className="col-12">
                     <div className="skill-bx wow zoomIn">
                         <h2><b>About Me!</b></h2>
-                        <p>I offer comprehensive services for startups to mid-level companies, covering website development, design, SEO optimization, seamless transitioning, and impactful additions. My expertise ensures that your web presence not only thrives but also aligns perfectly with your business goals and audience.</p>
+                        <p>Avid backpacker with a knack for programming, harboring a deep-seated passion for the vibrant energy of NYC. Driven by wanderlust and code, dreams of merging tech skills with the city's dynamic pulse.</p>
 
                     </div>
                 </div>
