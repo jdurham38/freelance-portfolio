@@ -14,6 +14,11 @@
 	src: url('./assets/font/CentraNo2-Book.ttf');
 	font-weight: 400;
 }
+ @keyframes rotate {
+  to {
+      transform: rotateY(1turn);
+     }
+   }
 
 /************ Default Css ************/
 * {
