@@ -1,7 +1,7 @@
 
 
 TODO:
-- fix faq section
+- update light and dark mode for faq pop up
 :
 
 

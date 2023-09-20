@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export const FAQ = () => {
 
   const [selectedQuestion, setSelectedQuestion] = useState(null);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const questions = [
     {
@@ -20,9 +21,34 @@ export const FAQ = () => {
     // ... add more questions as needed
   ];
 
+
   const closeModal = () => {
     setSelectedQuestion(null);
   };
+
+  useEffect(() => {
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    setIsDarkMode(darkModeMediaQuery.matches);
+
+    const handleMediaChange = (e) => {
+      setIsDarkMode(e.matches);
+    };
+
+    darkModeMediaQuery.addListener(handleMediaChange);
+
+    const handleEscape = (event) => {
+      if (event.keyCode === 27) {  // Escape key
+        closeModal();
+      }
+    };
+
+    window.addEventListener('keydown', handleEscape);
+
+    return () => {
+      darkModeMediaQuery.removeListener(handleMediaChange);
+      window.removeEventListener('keydown', handleEscape);
+    };
+  }, []);
 
 
   return (
@@ -71,7 +97,7 @@ export const FAQ = () => {
             left: 0,
             width: '100%',
             height: '100%',
-            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            backgroundColor: isDarkMode ? 'rgba(0, 0, 0, 0.9)' : 'rgba(0, 0, 0, 0.8)',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -80,10 +106,12 @@ export const FAQ = () => {
             <div style={{
               width: '80%',
               maxWidth: '500px',
-              backgroundColor: 'white',
+              backgroundColor: isDarkMode ? '#333' : 'white',
+            color: isDarkMode ? 'white' : '#333',
               padding: '20px',
               borderRadius: '10px',
-              position: 'relative'
+              position: 'relative',
+              boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.2)',
             }}>
               <button onClick={closeModal} style={{
                 position: 'absolute',
@@ -92,7 +120,8 @@ export const FAQ = () => {
                 background: 'transparent',
                 border: 'none',
                 fontSize: '20px',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                color: isDarkMode ? 'white' : '#333',
               }}>X</button>
               <p>{questions[selectedQuestion].answer}</p>
             </div>

@@ -4,7 +4,6 @@ import { ProjectCard } from "./ProjectCard";
 import projImg1 from "../assets/img/project-image-1.png";
 import projImg2 from "../assets/img/project-image-2.png";
 import projImg3 from "../assets/img/project-image-3.jpg";
-import colorSharp2 from "../assets/img/color-sharp2.png";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
@@ -18,6 +17,9 @@ export const Websites = () => {
   const handleClose = () => {
     setSelectedProject(null);
   };
+
+   // Detect user's preferred color scheme
+   const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   const projects = [
 
@@ -46,7 +48,7 @@ export const Websites = () => {
       left: '10%',
       right: '10%',
       bottom: '10%',
-      backgroundColor: 'rgba(0, 0, 0, 0.7)',
+      backgroundColor: isDarkMode ? 'rgba(0, 0, 0, 0.9)' : 'rgba(0, 0, 0, 0.7)',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -55,7 +57,8 @@ export const Websites = () => {
     },
     modalContent: {
       position: 'relative',
-      backgroundColor: 'white',
+      backgroundColor: isDarkMode ? '#333' : 'white',
+      color: isDarkMode ? 'white' : 'black',
       padding: '20px',
       borderRadius: '10px',
       width: '80%',
@@ -66,8 +69,8 @@ export const Websites = () => {
       position: 'absolute',
       top: '10px',
       right: '10px',
-      backgroundColor: 'red',
-      color: 'white',
+      backgroundColor: isDarkMode ? '#555' : 'red',
+      color: isDarkMode ? '#ddd' : 'white',
       border: 'none',
       padding: '10px 20px',
       cursor: 'pointer'
