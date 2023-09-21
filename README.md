@@ -1,7 +1,7 @@
 
 
 TODO:
-- update light and dark mode for faq pop up
+- Fix mobile issue with when the user clicks on any pricing card, it will always show the basic tier
 :
 
 

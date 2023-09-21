@@ -13,11 +13,21 @@ export const Pricing = () => {
     Array.from(items).forEach((item, index) => {
       const theta = (360 / items.length) * index * (Math.PI / 180);
       item.style.transform = `rotateY(${theta * (180 / Math.PI)}deg) translateZ(${radius}px)`;
+      item.style.zIndex = Math.round(1000 - index); // This will set the z-index in descending order
     });
   }, []);
+  
 
   const handleCardClick = (tier) => {
     setSelectedTier(tier);
+    const items = carouselRef.current.children;
+    Array.from(items).forEach((item, index) => {
+      if (tier.name === tiers[index].name) {
+        item.style.zIndex = 1000; // Bring the clicked card to the front
+      } else {
+        item.style.zIndex = 1000 - index; // Push other cards to the back
+      }
+    });
     
 
     // Check if the browser is in dark mode

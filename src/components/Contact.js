@@ -74,6 +74,7 @@ export const Contact = () => {
                           Your Name
                         </label>
                         <input
+                         id="fullName"
                           type="text"
                           className="font-light rounded-md border focus:outline-none py-2 mt-2 px-1 mx-4 focus:ring-2 focus:border-none ring-[#B3AEA8]"
                           name="name"
@@ -85,6 +86,7 @@ export const Contact = () => {
                           Email
                         </label>
                         <input
+                          id="emailAddress"
                           type="text"
                           className="font-light rounded-md border focus:outline-none py-2 mt-2 px-1 mx-4 focus:ring-2 focus:border-none ring-[#B3AEA8]"
                           name="email"
@@ -96,6 +98,7 @@ export const Contact = () => {
                           Message
                         </label>
                         <textarea
+                          id="messageContent"
                           rows="4"
                           className="font-light rounded-md border focus:outline-none py-2 mt-2 px-1 mx-4 focus:ring-2 focus:border-none ring-[#B3AEA8]"
                           name="message"
@@ -104,6 +107,7 @@ export const Contact = () => {
                       </div>
                     </div>
                     <button
+                      id="sendMessage"
                       type="submit"
                       className="bg-[#786F68] hover:bg-[#483A33] rounded-md w-1/2 mx-4 mt-8 py-2 text-gray-50 text-xs font-bold "
                     >
