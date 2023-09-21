@@ -41,6 +41,34 @@ export const Pricing = () => {
         document.documentElement.style.setProperty('--modal-text-color', '#333'); // dark text
     }
 };
+const determineClickedCard = (x, y) => {
+  const items = carouselRef.current.children;
+  for (let i = 0; i < items.length; i++) {
+    const cardRect = items[i].getBoundingClientRect();
+    if (
+      x >= cardRect.left &&
+      x <= cardRect.right &&
+      y >= cardRect.top &&
+      y <= cardRect.bottom
+    ) {
+      return i; // Return the index of the clicked card
+    }
+  }
+  return null; // No card was clicked
+};
+
+
+const handleCarouselClick = (e) => {
+  const rect = carouselRef.current.getBoundingClientRect();
+  const x = e.clientX - rect.left; // x position within the element.
+  const y = e.clientY - rect.top;  // y position within the element.
+
+  const clickedCardIndex = determineClickedCard(x, y);
+  if (clickedCardIndex !== null) {
+    handleCardClick(tiers[clickedCardIndex]);
+  }
+};
+
 
 
 
@@ -80,6 +108,7 @@ export const Pricing = () => {
         <div style={{ position: 'relative', width: '320px', margin: '100px auto 0 auto', perspective: '1000px' }}>
           <div
             ref={carouselRef}
+            onClick={(e) => handleCarouselClick(e)}
             style={{
               position: 'absolute',
               width: '100%',
